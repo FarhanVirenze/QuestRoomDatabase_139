@@ -10,6 +10,10 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MahasiswaDao {
+    @Insert
+    suspend fun insertMahasiswa(
+        mahasiswa: Mahasiswa
+    )
     //getAllMahasiswa
     @Query("SELECT * FROM mahasiswa ORDER BY nama ASC")
     fun getALLMahasiswa() : Flow<List<Mahasiswa>>
@@ -22,8 +26,4 @@ interface MahasiswaDao {
     //updateMahasiswa
     @Update
     suspend fun updateMahasiswa(mahasiswa: Mahasiswa)
-    @Insert
-    suspend fun insertMahasiswa(
-        mahasiswa: Mahasiswa
-    )
 }
