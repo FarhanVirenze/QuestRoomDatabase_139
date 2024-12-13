@@ -3,6 +3,7 @@ package com.pam.questroomdatabase_139.data.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.pam.questroomdatabase_139.Mahasiswa
 import kotlinx.coroutines.flow.Flow
 
 @Dao
