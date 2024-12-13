@@ -1,6 +1,7 @@
 package com.pam.questroomdatabase_139.data.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.pam.questroomdatabase_139.Mahasiswa
@@ -14,6 +15,9 @@ interface MahasiswaDao {
     //getMahasiswa
     @Query("SELECT * FROM mahasiswa WHERE nim = :nim")
     fun getMahasiswa(nim: String): Flow<Mahasiswa>
+    //deleteMahasiswa
+    @Delete
+    suspend fun deleteMahasiswa (mahasiswa: Mahasiswa)
     @Insert
     suspend fun insertMahasiswa(
         mahasiswa: Mahasiswa
