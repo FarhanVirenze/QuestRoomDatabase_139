@@ -1,4 +1,4 @@
-package com.pam.questroomdatabase_139.data
+package com.pam.questroomdatabase_139.data.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

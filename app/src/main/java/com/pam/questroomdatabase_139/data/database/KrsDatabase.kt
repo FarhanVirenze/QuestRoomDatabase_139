@@ -1,4 +1,4 @@
-package com.pam.questroomdatabase_139.database
+package com.pam.questroomdatabase_139.data.database
 
 import android.content.Context
 import androidx.room.Database
