@@ -37,12 +37,12 @@ class DetailMhsViewModel(
             emit(DetailUiState(isLoading = true)) // Set status loading saat mulai
             delay(600) // Simulasi delay jika diperlukan
         }
-        .catch { throwable ->
+        .catch {
             emit(
                 DetailUiState(
                     isLoading = false,
                     isError = true,
-                    errorMessage = throwable.message ?: "Terjadi Kesalahan"
+                    errorMessage = it.message ?: "Terjadi Kesalahan"
                 )
             )
         }

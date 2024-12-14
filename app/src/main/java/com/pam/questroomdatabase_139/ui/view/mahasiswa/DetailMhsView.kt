@@ -47,7 +47,7 @@ fun DetailMhsView(
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = "Edit Mahasiswa"
+                    contentDescription = "Edit Mahasiswa",
                 )
             }
         }
@@ -160,7 +160,7 @@ fun ItemDetailMhs(
 fun ComponentDetailMhs(
     modifier: Modifier = Modifier,
     judul: String,
-    isinya: String
+    isinya: String,
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),

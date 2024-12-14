@@ -35,8 +35,11 @@ fun UpdateMhsView(
 
     // Menangani pesan snackbar ketika ada perubahan pada snackBarMessage
     LaunchedEffect(uiState.snackBarMessage) {
+        println("LaunchedEffect triggered")
         uiState.snackBarMessage?.let { message ->
+            println("Snackbar message received: $message")
             coroutineScope.launch {
+                println("Launching coroutine for snacbar")
                 snackbarHostState.showSnackbar(
                     message = message,
                     duration = SnackbarDuration.Long

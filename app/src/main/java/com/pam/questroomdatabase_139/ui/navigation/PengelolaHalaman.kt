@@ -29,7 +29,7 @@ fun PengelolaHalaman(
             HomeMhsView(
                 onDetailClick = { nim ->
                     navController.navigate("${DestinasiDetail.route}/$nim")
-                    println("Navigating to DetailMhsView with NIM = $nim")
+                    println("PengelolaHalaman = $nim")
                 },
                 onAddMhs = {
                     navController.navigate(DestinasiInsert.route) // Navigate to InsertMhsView
@@ -53,7 +53,7 @@ fun PengelolaHalaman(
         }
 
         composable(
-            route = DestinasiDetail.routesWithArg,
+            DestinasiDetail.routesWithArg,
             arguments = listOf(
                 navArgument(DestinasiDetail.NIM) {
                     type = NavType.StringType
@@ -67,26 +67,25 @@ fun PengelolaHalaman(
                         navController.popBackStack() // Return to previous screen
                     },
                     onEditClick = {
-                        navController.navigate("${DestinasiUpdate.route}/$nim")
+                        navController.navigate("${DestinasiUpdate.route}/$it")
                     },
+                    modifier = modifier,
                     onDeleteClick = {
                         navController.popBackStack() // Go back after deletion
-                    },
-                    modifier = modifier
+                    }
                 )
             }
         }
 
         composable(
-            route = DestinasiUpdate.routesWithArg,
+            DestinasiUpdate.routesWithArg,
             arguments = listOf(
                 navArgument(DestinasiUpdate.NIM) {
                     type = NavType.StringType
                 }
             )
         ) {
-            val nim = it.arguments?.getString(DestinasiUpdate.NIM)
-            nim?.let { nim ->
+
                 UpdateMhsView(
                     onBack = {
                         navController.popBackStack() // Return to previous screen
@@ -99,4 +98,3 @@ fun PengelolaHalaman(
             }
         }
     }
-}
