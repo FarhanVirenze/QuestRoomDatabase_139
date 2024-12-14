@@ -13,8 +13,6 @@ import com.pam.questroomdatabase_139.ui.view.mahasiswa.DetailMhsView
 import com.pam.questroomdatabase_139.ui.view.mahasiswa.HomeMhsView
 import com.pam.questroomdatabase_139.ui.view.mahasiswa.InsertMhsView
 import com.pam.questroomdatabase_139.ui.view.mahasiswa.UpdateMhsView
-import kotlin.reflect.typeOf
-
 
 @Composable
 fun PengelolaHalaman(
@@ -23,20 +21,18 @@ fun PengelolaHalaman(
 ) {
     NavHost(
         navController = navController,
-        startDestination = DestinasiInsert.route
+        startDestination = DestinasiHome.route // Starting screen is HomeMhsView
     ) {
         composable(
-            route = DestinasiInsert.route
+            route = DestinasiHome.route
         ) {
             HomeMhsView(
                 onDetailClick = { nim ->
                     navController.navigate("${DestinasiDetail.route}/$nim")
-                    println(
-                        "PengelolaHalaman: nim = $nim"
-                    )
+                    println("Navigating to DetailMhsView with NIM = $nim")
                 },
                 onAddMhs = {
-                    navController.navigate(DestinasiInsert.route)
+                    navController.navigate(DestinasiInsert.route) // Navigate to InsertMhsView
                 },
                 modifier = modifier
             )
@@ -47,17 +43,17 @@ fun PengelolaHalaman(
         ) {
             InsertMhsView(
                 onBack = {
-                    navController.popBackStack()
+                    navController.popBackStack() // Return to previous screen
                 },
                 onNavigate = {
-                    navController.popBackStack()
+                    navController.popBackStack() // Go back after insert
                 },
-                modifier = modifier,
+                modifier = modifier
             )
         }
 
         composable(
-            DestinasiDetail.routesWithArg,
+            route = DestinasiDetail.routesWithArg,
             arguments = listOf(
                 navArgument(DestinasiDetail.NIM) {
                     type = NavType.StringType
@@ -68,37 +64,39 @@ fun PengelolaHalaman(
             nim?.let { nim ->
                 DetailMhsView(
                     onBack = {
-                        navController.popBackStack()
+                        navController.popBackStack() // Return to previous screen
                     },
                     onEditClick = {
-                        navController.navigate("${DestinasiUpdate.route}/$it")
+                        navController.navigate("${DestinasiUpdate.route}/$nim")
                     },
-                    modifier = modifier,
                     onDeleteClick = {
-                        navController.popBackStack()
-                    }
+                        navController.popBackStack() // Go back after deletion
+                    },
+                    modifier = modifier
                 )
             }
         }
 
         composable(
-            DestinasiUpdate.routesWithArg,
+            route = DestinasiUpdate.routesWithArg,
             arguments = listOf(
                 navArgument(DestinasiUpdate.NIM) {
                     type = NavType.StringType
                 }
             )
         ) {
-            UpdateMhsView(
-                onBack = {
-                    navController.popBackStack()
-                },
-                onNavigate = {
-                    navController.popBackStack()
-                },
-                modifier = modifier,
-            )
+            val nim = it.arguments?.getString(DestinasiUpdate.NIM)
+            nim?.let { nim ->
+                UpdateMhsView(
+                    onBack = {
+                        navController.popBackStack() // Return to previous screen
+                    },
+                    onNavigate = {
+                        navController.popBackStack() // Go back after update
+                    },
+                    modifier = modifier
+                )
+            }
         }
     }
 }
-
