@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.pam.questroomdatabase_139.ui.costumwidget.TopAppBar
+
 import com.pam.questroomdatabase_139.ui.navigation.AlamatNavigasi
 import com.pam.questroomdatabase_139.ui.viewmodel.FormErrorState
 import com.pam.questroomdatabase_139.ui.viewmodel.MahasiswaEvent
@@ -71,8 +72,8 @@ fun InsertMhsView(
             TopAppBar(
                 onBack = onBack,
                 showBackButton = true,
-                judul = "Tambah Mahasiswa"
-
+                judul = "Tambah Mahasiswa",
+                modifier = Modifier
             )
             InsertBodyMhs(
                 uiState = uiState,
