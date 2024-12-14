@@ -25,3 +25,7 @@
 ![image](https://github.com/user-attachments/assets/48095297-4f05-4bac-a252-c41c437e3a30)
 
 
+<p>Tampilan setelah Deleted</p>
+
+![image](https://github.com/user-attachments/assets/71cc38a6-8734-458a-9a89-15e274743ae6)
+
